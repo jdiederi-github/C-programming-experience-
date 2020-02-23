@@ -1,0 +1,54 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+using namespace std;
+
+bool TooHigh(double low, double high, double num)
+
+{
+	double test = (low + high) / 2;
+	
+	if (test* test > num)
+	{
+		return true;
+	}
+	else return false;
+}
+
+double GetParm(char c[])
+{
+	return atof(c);
+}
+
+int main(int argc, char *argv[])
+
+{
+	double num = GetParm(argv[1]);
+	double high = num;
+	double low = 0;
+	double test = 0;
+	for (int i = 1; i < 100; i++)
+	{
+		if (TooHigh(low, high, num))
+		{
+			high = (low + high) / 2;
+		
+
+		}
+		
+		else
+		{
+			low = (low + high) / 2;
+
+		}
+		
+	}
+	printf("The Square Root is %f", low);
+	getchar();
+	return 0;
+
+	//n = atof(argv[1]);
+}
+

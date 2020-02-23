@@ -1,0 +1,43 @@
+/*  
+Grade.c.  A student's score out of 100 possible will be entered as a program parameter.  The program will display the letter grade based upon a straight scale, with the words "excellent," "good," "average," "below average," or "poor" next to it.  There will be a function to get the parameters, a function to get the letter grade, a function to get the words, and a function to display the answer.  No "If" functions may be used. */
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+
+int theScore = 0;
+char theWord[25];
+
+int getScore(char c[3]) {
+	
+	return atoi(c);
+}
+
+char getLetter(int n) {
+	char LetterGrades[12] = { "FFFFFFDCBA" };
+	char theLetter;
+	theLetter = LetterGrades[n / 10];
+	return theLetter;
+}
+char *getWords(int n) {
+	char *saying[] = { "poor", "poor", "poor", "poor", "poor", "poor", "below average", "average", "good", "excellent"};
+
+	return saying[n / 10];
+}
+
+int main(int argc, char *argv[]){
+		
+	theScore = getScore(argv[1]);
+	
+
+
+	printf("Score: %d\n", theScore);
+	printf("Grade: %c\n", getLetter(theScore));
+	strcpy_s(theWord, 25, getWords(theScore));
+	printf("Comment: %s.", getWords(theScore));
+
+	printf("\nPress Enter to quit");
+	getchar();
+	return 0;
+}
